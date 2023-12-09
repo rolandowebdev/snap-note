@@ -8,11 +8,15 @@ import {
   VStack,
   Text
 } from '@chakra-ui/react'
-import { CheckCircle, Circle, FileEdit, Trash } from 'lucide-react'
-import { showFormattedDate } from '@/utils'
 import { Link } from 'react-router-dom'
+import { CheckCircle, Circle, FileEdit } from 'lucide-react'
+import { AlertDialog } from './alert-dialog'
+import { showFormattedDate } from '@/utils'
+import { useNotes } from '@/context'
 
 export const NoteCard = ({ id, title, body, createdAt, archived }) => {
+  const { deleteNote } = useNotes()
+
   return (
     <Card
       w='full'
@@ -65,13 +69,10 @@ export const NoteCard = ({ id, title, body, createdAt, archived }) => {
               _active={{ bgColor: 'transparent' }}
               icon={<FileEdit />}
             />
-            <IconButton
-              aria-label='delete note'
-              color='brand.light'
-              variant='ghost'
-              _hover={{ color: 'brand.danger' }}
-              _active={{ bgColor: 'transparent' }}
-              icon={<Trash />}
+            <AlertDialog
+              title='Note'
+              description='Are you sure you want to delete this note?'
+              onDelete={() => deleteNote(id)}
             />
           </HStack>
         </VStack>

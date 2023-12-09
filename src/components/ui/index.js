@@ -1,2 +1,2 @@
-export * from './Header'
-export * from './NoteCard'
+export * from './alert-dialog'
+export * from './note-card'
