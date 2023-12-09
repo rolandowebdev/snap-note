@@ -31,6 +31,7 @@ export const NoteCard = ({ id, title, body, createdAt, archived }) => {
               color='brand.light'
               variant='ghost'
               _hover={{ color: 'brand.warning' }}
+              _active={{ bgColor: 'transparent' }}
               icon={<Circle />}
             />
           )}
@@ -41,7 +42,8 @@ export const NoteCard = ({ id, title, body, createdAt, archived }) => {
                 fontSize='lg'
                 fontWeight='600'
                 display='inline-block'
-                _hover={{ textDecor: 'underline' }}>
+                _hover={{ textDecor: 'underline' }}
+                _active={{ bgColor: 'transparent' }}>
                 {title}
               </Heading>
             </Link>
@@ -60,6 +62,7 @@ export const NoteCard = ({ id, title, body, createdAt, archived }) => {
               color='brand.light'
               variant='ghost'
               _hover={{ color: 'brand.success' }}
+              _active={{ bgColor: 'transparent' }}
               icon={<FileEdit />}
             />
             <IconButton
@@ -67,6 +70,7 @@ export const NoteCard = ({ id, title, body, createdAt, archived }) => {
               color='brand.light'
               variant='ghost'
               _hover={{ color: 'brand.danger' }}
+              _active={{ bgColor: 'transparent' }}
               icon={<Trash />}
             />
           </HStack>
