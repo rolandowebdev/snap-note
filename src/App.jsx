@@ -1,3 +1,5 @@
+import { Button } from '@chakra-ui/react'
+
 export const App = () => {
-  return <h1 className='text-4xl font-bold text-sky-500'>App</h1>
+  return <Button colorScheme='teal'>Snap Note</Button>
 }
