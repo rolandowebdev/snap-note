@@ -14,7 +14,7 @@ dependencies:
   '@emotion/styled':
     specifier: ^11.11.0
     version: 11.11.0(@emotion/react@11.11.1)(@types/react@18.2.42)(react@18.2.0)
-  '@fontsource/fira-sans':
+  '@fontsource/plus-jakarta-sans':
     specifier: ^5.0.18
     version: 5.0.18
   framer-motion:
@@ -1571,8 +1571,8 @@ packages:
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     dev: true
 
-  /@fontsource/fira-sans@5.0.18:
-    resolution: {integrity: sha512-FAxkEg8LSYqihmZ0bBGxVyPzur5P6QwGssVcolUAKO+DrdopbxJxuUb8H8kzSoF9OkVR7ZAmaIQiWvm973PubA==}
+  /@fontsource/plus-jakarta-sans@5.0.18:
+    resolution: {integrity: sha512-poMuIcQ8F7WGXF4mNUviDk49Ewdf0pU7wmCzWQNbWEtus+L46BSp+4OqbWy0LWJEmMLI9F5hUHaSo2maLJwrQw==}
     dev: false
 
   /@humanwhocodes/config-array@0.11.13:
