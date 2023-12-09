@@ -12,7 +12,8 @@ const colors = {
     border: '#21262d',
     light: '#e6edf3',
     danger: '#EF4040',
-    success: '#33BBC5'
+    success: '#33BBC5',
+    warning: '#E3651D'
   }
 }
 
