@@ -10,8 +10,21 @@ export const NotesProvider = ({ children }) => {
     setNotes((prevNotes) => prevNotes.filter((note) => note.id !== id))
   }
 
+  const addNote = (title, body) => {
+    setNotes((prevNotes) => [
+      ...prevNotes,
+      {
+        id: +new Date(),
+        title: title || '',
+        body: body || '',
+        createdAt: new Date().toISOString(),
+        archived: false
+      }
+    ])
+  }
+
   return (
-    <NotesContext.Provider value={{ notes, setNotes, deleteNote }}>
+    <NotesContext.Provider value={{ notes, setNotes, deleteNote, addNote }}>
       {children}
     </NotesContext.Provider>
   )

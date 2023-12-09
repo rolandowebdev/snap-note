@@ -1,4 +1,5 @@
-import { Frown, Search, Plus } from 'lucide-react'
+import { useState } from 'react'
+import { Frown, Search } from 'lucide-react'
 import {
   Container,
   Box,
@@ -7,14 +8,15 @@ import {
   Heading,
   Input,
   InputGroup,
-  InputLeftAddon,
-  IconButton
+  InputLeftAddon
 } from '@chakra-ui/react'
-import { NoteCard } from '@/components/ui'
+import { NoteCard, AddModal } from '@/components/ui'
 import { useNotes } from '@/context'
 
 export const Home = () => {
-  const { notes } = useNotes()
+  const { notes, addNote } = useNotes()
+  const [title, setTitle] = useState('')
+  const [body, setBody] = useState('')
 
   return (
     <>
@@ -42,16 +44,10 @@ export const Home = () => {
                 bg='brand.softDark'
               />
             </InputGroup>
-            <IconButton
-              h={12}
-              w={14}
-              variant='ghost'
-              aria-label='add note'
-              bg='brand.softDark'
-              color='gray.500'
-              _hover={{ bgColor: 'brand.border' }}
-              _active={{ bgColor: 'transparent' }}
-              icon={<Plus />}
+            <AddModal
+              onAddNote={() => addNote(title, body)}
+              setTitle={setTitle}
+              setBody={setBody}
             />
           </Box>
         </Box>
@@ -59,12 +55,12 @@ export const Home = () => {
           <VStack as='article' gap={3}>
             {notes.length > 0 ? (
               notes
-                .slice(0, 4)
+                .slice(0, 3)
                 .map((note) => <NoteCard key={note.id} {...note} />)
             ) : (
               <Box display='flex' alignItems='center' gap={2}>
-                <Frown size={32} />
-                <Text as='h2' fontSize='3xl' fontWeight={500}>
+                <Frown size={28} />
+                <Text as='h2' fontSize='2xl' fontWeight={500}>
                   Note is empty
                 </Text>
               </Box>

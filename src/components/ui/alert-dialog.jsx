@@ -8,16 +8,24 @@ import {
   AlertDialogHeader,
   AlertDialogBody,
   AlertDialogFooter,
-  useDisclosure
+  useDisclosure,
+  useToast
 } from '@chakra-ui/react'
 import { Trash } from 'lucide-react'
 
 export const AlertDialog = ({ description, title, onDelete }) => {
   const { isOpen, onOpen, onClose } = useDisclosure()
   const cancelRef = useRef()
+  const toast = useToast()
 
   const handleDelete = () => {
     onDelete()
+    toast({
+      title: 'Success delete note',
+      status: 'success',
+      duration: 3000,
+      isClosable: true
+    })
     onClose()
   }
 
@@ -39,7 +47,7 @@ export const AlertDialog = ({ description, title, onDelete }) => {
         leastDestructiveRef={cancelRef}
         onClose={onClose}>
         <AlertDialogOverlay>
-          <AlertDialogContent>
+          <AlertDialogContent bg='brand.softDark' color='brand.light'>
             <AlertDialogHeader fontSize='lg' fontWeight='bold'>
               Delete {title}
             </AlertDialogHeader>
