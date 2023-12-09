@@ -24,21 +24,15 @@ export const NoteCard = ({ id, title, body, createdAt, archived }) => {
       <CardBody display='flex' p={3} gap={3} justifyContent='space-between'>
         <HStack gap={3}>
           {archived ? (
-            <IconButton
-              aria-label='uncheck note'
-              color='brand.light'
-              variant='ghost'
-              _hover={{ color: 'brand.success' }}>
-              <CheckCircle />
-            </IconButton>
+            <IconButton aria-label='uncheck note' icon={<CheckCircle />} />
           ) : (
             <IconButton
               aria-label='check note'
               color='brand.light'
               variant='ghost'
-              _hover={{ color: 'brand.warning' }}>
-              <Circle />
-            </IconButton>
+              _hover={{ color: 'brand.warning' }}
+              icon={<Circle />}
+            />
           )}
           <Box display='flex' flexDir='column' gap={2}>
             <Link to={`/detail/${id}`}>
@@ -52,7 +46,7 @@ export const NoteCard = ({ id, title, body, createdAt, archived }) => {
               </Heading>
             </Link>
             <Text fontSize='sm' fontWeight='300'>
-              {`${body.slice(0, 70)}...`}
+              {`${body.slice(0, 55)}...`}
             </Text>
           </Box>
         </HStack>
@@ -65,16 +59,16 @@ export const NoteCard = ({ id, title, body, createdAt, archived }) => {
               aria-label='edit note'
               color='brand.light'
               variant='ghost'
-              _hover={{ color: 'brand.success' }}>
-              <FileEdit />
-            </IconButton>
+              _hover={{ color: 'brand.success' }}
+              icon={<FileEdit />}
+            />
             <IconButton
               aria-label='delete note'
               color='brand.light'
               variant='ghost'
-              _hover={{ color: 'brand.danger' }}>
-              <Trash />
-            </IconButton>
+              _hover={{ color: 'brand.danger' }}
+              icon={<Trash />}
+            />
           </HStack>
         </VStack>
       </CardBody>
