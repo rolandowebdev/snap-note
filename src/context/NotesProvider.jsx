@@ -1,5 +1,5 @@
 import { createContext, useState, useContext } from 'react'
-import { listNote } from '@/_data/notes'
+import { listNote } from '@/_data'
 
 const NotesContext = createContext()
 

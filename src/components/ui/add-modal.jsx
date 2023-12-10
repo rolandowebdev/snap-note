@@ -1,4 +1,4 @@
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
 import {
   useDisclosure,
   Button,
@@ -11,27 +11,37 @@ import {
   ModalFooter,
   FormControl,
   FormLabel,
-  Input,
   IconButton,
-  useToast
+  Input
 } from '@chakra-ui/react'
 import { Plus } from 'lucide-react'
+import { useNotes } from '@/context'
+import { useCustomToast } from '@/hooks'
 
-export const AddModal = ({ setTitle, setBody, onAddNote }) => {
+export const AddModal = () => {
+  const { addNote } = useNotes()
+  const { showToast } = useCustomToast()
   const { isOpen, onOpen, onClose } = useDisclosure()
 
-  const toast = useToast()
+  const [title, setTitle] = useState('')
+  const [body, setBody] = useState('')
+
   const initialRef = useRef(null)
   const finalRef = useRef(null)
 
+  const addAndResetNote = () => {
+    addNote(title, body)
+    setTitle('')
+    setBody('')
+  }
+
   const handleAddNote = () => {
-    onAddNote()
-    toast({
-      title: 'Success add note',
-      status: 'success',
-      duration: 3000,
-      isClosable: true
-    })
+    if (!title || !body) {
+      return showToast('error', 'Title and body cannot be empty')
+    }
+
+    addAndResetNote()
+    showToast('success', 'Note added successfully')
     onClose()
   }
 

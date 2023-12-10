@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import { Frown, Search } from 'lucide-react'
 import {
   Container,
@@ -10,13 +9,11 @@ import {
   InputGroup,
   InputLeftAddon
 } from '@chakra-ui/react'
-import { NoteCard, AddModal } from '@/components/ui'
+import { NoteCard, AddModal } from '@/components'
 import { useNotes } from '@/context'
 
 export const Home = () => {
-  const { notes, addNote } = useNotes()
-  const [title, setTitle] = useState('')
-  const [body, setBody] = useState('')
+  const { notes } = useNotes()
 
   return (
     <>
@@ -44,11 +41,7 @@ export const Home = () => {
                 bg='brand.softDark'
               />
             </InputGroup>
-            <AddModal
-              onAddNote={() => addNote(title, body)}
-              setTitle={setTitle}
-              setBody={setBody}
-            />
+            <AddModal />
           </Box>
         </Box>
         <Box as='main' pb={10}>
