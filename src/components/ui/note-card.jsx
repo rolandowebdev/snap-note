@@ -17,7 +17,7 @@ import { useNotes } from '@/context'
 import { FormModal } from './form-modal'
 
 export const NoteCard = ({ id, title, body, createdAt, archived }) => {
-  const { deleteNote } = useNotes()
+  const { deleteNote, archiveNote } = useNotes()
   return (
     <Card
       w='full'
@@ -35,6 +35,7 @@ export const NoteCard = ({ id, title, body, createdAt, archived }) => {
               color='brand.light'
               _hover={{ color: 'brand.success' }}
               _active={{ bgColor: 'transparent' }}
+              onClick={() => archiveNote(id)}
               icon={<CheckCircle />}
             />
           ) : (
@@ -44,6 +45,7 @@ export const NoteCard = ({ id, title, body, createdAt, archived }) => {
               color='brand.light'
               _hover={{ color: 'brand.warning' }}
               _active={{ bgColor: 'transparent' }}
+              onClick={() => archiveNote(id)}
               icon={<Circle />}
             />
           )}

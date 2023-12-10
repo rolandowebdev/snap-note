@@ -52,6 +52,14 @@ export const NotesProvider = ({ children }) => {
     )
   }
 
+  const archiveNote = (id) => {
+    setNotes((prevNotes) =>
+      prevNotes.map((note) =>
+        note.id === id ? { ...note, archived: !note.archived } : note
+      )
+    )
+  }
+
   return (
     <NotesContext.Provider
       value={{
@@ -63,6 +71,7 @@ export const NotesProvider = ({ children }) => {
         addNote,
         editNote,
         getNoteById,
+        archiveNote,
         onKeywordChange,
         keyword
       }}>
