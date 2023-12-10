@@ -44,6 +44,14 @@ export const NotesProvider = ({ children }) => {
     ])
   }
 
+  const editNote = (id, title, body) => {
+    setNotes((prevNotes) =>
+      prevNotes.map((note) =>
+        note.id === id ? { ...note, title, body } : note
+      )
+    )
+  }
+
   return (
     <NotesContext.Provider
       value={{
@@ -53,6 +61,7 @@ export const NotesProvider = ({ children }) => {
         setNotes,
         deleteNote,
         addNote,
+        editNote,
         getNoteById,
         onKeywordChange,
         keyword

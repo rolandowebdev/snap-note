@@ -10,7 +10,7 @@ import {
   TabPanel
 } from '@chakra-ui/react'
 import { useNotes } from '@/context'
-import { NoteCard, AddModal, EmptyNotes, SearchNotes } from '@/components'
+import { NoteCard, FormModal, EmptyNotes, SearchNotes } from '@/components'
 
 export const Home = () => {
   const { unarchivedNotes, archivedNotes } = useNotes()
@@ -23,7 +23,7 @@ export const Home = () => {
           </Heading>
           <Box as='nav' mt={6} display='flex' gap={3} alignItems='center'>
             <SearchNotes />
-            <AddModal />
+            <FormModal />
           </Box>
         </Box>
         <Tabs variant='soft-rounded' my={2} colorScheme='whiteAlpha'>

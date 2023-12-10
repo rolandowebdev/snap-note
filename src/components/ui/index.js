@@ -1,4 +1,4 @@
-export * from './add-modal'
+export * from './form-modal'
 export * from './alert-dialog'
 export * from './empty-notes'
 export * from './note-card'

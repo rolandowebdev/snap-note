@@ -9,14 +9,14 @@ import {
   Text
 } from '@chakra-ui/react'
 import { Link } from 'react-router-dom'
-import { CheckCircle, Circle, FileEdit } from 'lucide-react'
+import { CheckCircle, Circle } from 'lucide-react'
 import { AlertDialog } from './alert-dialog'
 import { showFormattedDate } from '@/utils'
 import { useNotes } from '@/context'
+import { FormModal } from './form-modal'
 
 export const NoteCard = ({ id, title, body, createdAt, archived }) => {
   const { deleteNote } = useNotes()
-
   return (
     <Card
       w='full'
@@ -68,14 +68,7 @@ export const NoteCard = ({ id, title, body, createdAt, archived }) => {
             {showFormattedDate(createdAt)}
           </Text>
           <HStack gap={0}>
-            <IconButton
-              variant='ghost'
-              aria-label='edit note'
-              color='brand.light'
-              _hover={{ color: 'brand.success' }}
-              _active={{ bgColor: 'transparent' }}
-              icon={<FileEdit />}
-            />
+            <FormModal noteId={id} />
             <AlertDialog
               title='Note'
               description='Are you sure you want to delete this note?'
