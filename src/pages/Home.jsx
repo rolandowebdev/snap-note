@@ -42,7 +42,24 @@ export const Home = () => {
             </Tab>
           </TabList>
           <TabPanels>
-            <TabPanel as='main' padding={0} mt={4}>
+            <TabPanel
+              as='main'
+              padding={0}
+              mt={4}
+              maxH='400px'
+              overflowY='auto'
+              css={{
+                '&::-webkit-scrollbar': {
+                  width: '5px'
+                },
+                '&::-webkit-scrollbar-track': {
+                  width: '6px'
+                },
+                '&::-webkit-scrollbar-thumb': {
+                  background: '#FFFFFFA3',
+                  borderRadius: '24px'
+                }
+              }}>
               <VStack as='article' gap={3}>
                 {unarchivedNotes.length > 0 ? (
                   unarchivedNotes.map((note) => (
@@ -53,7 +70,24 @@ export const Home = () => {
                 )}
               </VStack>
             </TabPanel>
-            <TabPanel as='main' padding={0} mt={4}>
+            <TabPanel
+              as='main'
+              padding={0}
+              mt={4}
+              maxH='400px'
+              overflowY='auto'
+              css={{
+                '&::-webkit-scrollbar': {
+                  width: '5px'
+                },
+                '&::-webkit-scrollbar-track': {
+                  width: '6px'
+                },
+                '&::-webkit-scrollbar-thumb': {
+                  background: '#FFFFFFA3',
+                  borderRadius: '24px'
+                }
+              }}>
               <VStack as='article' gap={3}>
                 {archivedNotes.length > 0 ? (
                   archivedNotes.map((note) => (

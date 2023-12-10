@@ -7,9 +7,10 @@ import {
   CardBody,
   HStack,
   VStack,
-  Text
+  Text,
+  Link
 } from '@chakra-ui/react'
-import { Link } from 'react-router-dom'
+import { Link as RouterLink } from 'react-router-dom'
 import { CheckCircle, Circle } from 'lucide-react'
 import { AlertDialog } from './alert-dialog'
 import { showFormattedDate } from '@/utils'
@@ -49,22 +50,23 @@ export const NoteCard = ({ id, title, body, createdAt, archived }) => {
               icon={<Circle />}
             />
           )}
-          <Box display='flex' flexDir='column' gap={2}>
-            <Link to={`/detail/${id}`}>
-              <Heading
-                as='h2'
-                fontSize='lg'
-                fontWeight='600'
-                display='inline-block'
-                _hover={{ textDecor: 'underline' }}
-                _active={{ bgColor: 'transparent' }}>
-                {title}
-              </Heading>
-            </Link>
+          <Link
+            as={RouterLink}
+            to={`/detail/${id}`}
+            display='flex'
+            flexDir='column'
+            gap={2}
+            _hover={{ textDecor: 'underline' }}
+            _active={{ bgColor: 'transparent' }}>
+            <Heading as='h2' fontSize='lg' fontWeight='600'>
+              {title}
+            </Heading>
             <Text fontSize='sm' fontWeight='300'>
-              {`${body.slice(0, 55)}...`}
+              {`${body.length > 55 ? body.slice(0, 55) : body}${
+                body.length > 55 ? '...' : ''
+              }`}
             </Text>
-          </Box>
+          </Link>
         </HStack>
         <VStack>
           <Text fontSize='12px' fontWeight={700}>
