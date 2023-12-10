@@ -10,7 +10,7 @@ const colors = {
     dark: '#0d1117',
     softDark: '#161b22',
     border: '#21262d',
-    light: '#FFFFFFA3',
+    light: '#e6edf3',
     danger: '#EF4040',
     success: '#33BBC5',
     warning: '#E3651D'

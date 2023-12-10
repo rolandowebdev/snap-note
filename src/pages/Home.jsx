@@ -30,14 +30,14 @@ export const Home = () => {
           <TabList>
             <Tab
               rounded='md'
-              _focus={{ bg: 'brand.softDark' }}
-              color='brand.light'>
+              color='#FFFFFFA3'
+              _focus={{ bg: 'brand.softDark', color: 'brand.light' }}>
               Unarchived
             </Tab>
             <Tab
               rounded='md'
-              _focus={{ bg: 'brand.softDark' }}
-              color='brand.light'>
+              color='#FFFFFFA3'
+              _focus={{ bg: 'brand.softDark', color: 'brand.light' }}>
               Archived
             </Tab>
           </TabList>
