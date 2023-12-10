@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types'
 import parse from 'html-react-parser'
 import {
-  Box,
   Heading,
   IconButton,
   Card,
