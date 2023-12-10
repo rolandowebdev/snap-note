@@ -53,7 +53,7 @@ export const NoteCard = ({ id, title, body, createdAt, archived }) => {
           )}
           <Link
             as={RouterLink}
-            to={`/${id}`}
+            to={`/detail/${id}`}
             display='flex'
             flexDir='column'
             gap={2}
