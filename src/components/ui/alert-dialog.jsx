@@ -22,7 +22,7 @@ export const AlertDialog = ({ description, title, onDelete }) => {
   const handleDelete = () => {
     onDelete()
     toast({
-      title: 'Success delete note',
+      title: 'Note deleted successfully',
       status: 'success',
       duration: 3000,
       isClosable: true

@@ -24,7 +24,7 @@ export const DetailNote = () => {
 
   return (
     <>
-      <Container maxW='container.sm' minH='calc(100vh - 53px)'>
+      <Container maxW='container.sm' minH='calc(100vh - 56px)'>
         {note ? (
           <>
             <Box
@@ -49,9 +49,9 @@ export const DetailNote = () => {
             </Box>
             <Box as='main' pb={10} pt={5}>
               <Image
+                mb={2}
                 w='full'
                 rounded='md'
-                mb={2}
                 h='250px'
                 objectFit='cover'
                 src='public/example.jpg'

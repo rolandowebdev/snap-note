@@ -9,7 +9,7 @@ export const Footer = () => {
       textAlign='center'
       maxW='container.sm'
       marginInline='auto'>
-      <Text fontSize='sm'>© {year} Snap Note - All rights reserved</Text>
+      <Text fontSize='md'>© {year} Snap Note - All rights reserved</Text>
     </Box>
   )
 }

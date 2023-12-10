@@ -96,6 +96,7 @@ export const FormModal = ({ noteId }) => {
               <FormControl>
                 <FormLabel>Title</FormLabel>
                 <Input
+                  maxLength={20}
                   ref={initialRef}
                   placeholder='Title'
                   onChange={(e) => setTitle(e.target.value)}

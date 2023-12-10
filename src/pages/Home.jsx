@@ -22,7 +22,7 @@ export const Home = () => {
   const { unarchivedNotes, archivedNotes } = useNotes()
   return (
     <>
-      <Container maxW='container.sm' minH='calc(100vh - 53px)'>
+      <Container maxW='container.sm' minH='calc(100vh - 56px)'>
         <Box as='header' py='1rem'>
           <Heading as='h1' size='xl' fontWeight='700' textAlign='center'>
             Snap Note
