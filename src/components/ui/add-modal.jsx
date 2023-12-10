@@ -53,7 +53,7 @@ export const AddModal = () => {
         variant='ghost'
         aria-label='add note'
         bg='brand.softDark'
-        color='gray.500'
+        color='#4a5568'
         _hover={{ bgColor: 'brand.border' }}
         _active={{ bgColor: 'transparent' }}
         onClick={onOpen}

@@ -18,7 +18,7 @@ import { NoteCard, AddModal } from '@/components'
 import { useNotes } from '@/context'
 
 export const Home = () => {
-  const { notes, unarchivedNotes, archivedNotes } = useNotes()
+  const { unarchivedNotes, archivedNotes } = useNotes()
 
   return (
     <>
@@ -28,21 +28,20 @@ export const Home = () => {
             Snap Note
           </Heading>
           <Box as='nav' mt={6} display='flex' gap={3} alignItems='center'>
-            <InputGroup>
+            <InputGroup color='#4a5568'>
               <InputLeftAddon
                 pr={0}
                 pl={4}
                 border={0}
                 h={12}
                 bg='brand.softDark'
-                color='gray.500'
                 children={<Search size={22} />}
               />
               <Input
+                h={12}
+                border={0}
                 type='search'
                 placeholder='Search Note'
-                border={0}
-                h={12}
                 bg='brand.softDark'
               />
             </InputGroup>
