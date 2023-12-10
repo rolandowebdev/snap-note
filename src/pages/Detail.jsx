@@ -43,7 +43,12 @@ export const DetailNote = () => {
                 _active={{ bgColor: 'brand.border' }}
                 icon={<ArrowLeft />}
               />
-              <Text w='full' fontSize='3xl' fontWeight={700} textAlign='center'>
+              <Text
+                w='full'
+                fontSize='3xl'
+                fontWeight={700}
+                textAlign='center'
+                marginLeft='-40px'>
                 {note?.title}
               </Text>
             </Box>
