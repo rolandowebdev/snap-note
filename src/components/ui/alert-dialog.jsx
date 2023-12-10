@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import { useRef } from 'react'
 import {
   Button,
@@ -67,4 +68,10 @@ export const AlertDialog = ({ description, title, onDelete }) => {
       </ChakraDialog>
     </>
   )
+}
+
+AlertDialog.propTypes = {
+  description: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  onDelete: PropTypes.func.isRequired
 }

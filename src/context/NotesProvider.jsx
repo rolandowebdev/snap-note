@@ -35,7 +35,7 @@ export const NotesProvider = ({ children }) => {
     setNotes((prevNotes) => [
       ...prevNotes,
       {
-        id: +new Date(),
+        id: new Date().toString(),
         title: title || '',
         body: body || '',
         createdAt: new Date().toISOString(),

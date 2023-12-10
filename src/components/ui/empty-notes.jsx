@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import { Bird } from 'lucide-react'
 import { Box, Heading, Text } from '@chakra-ui/react'
 
@@ -13,4 +14,8 @@ export const EmptyNotes = ({ description }) => {
       </Text>
     </Box>
   )
+}
+
+EmptyNotes.propTypes = {
+  description: PropTypes.string.isRequired
 }

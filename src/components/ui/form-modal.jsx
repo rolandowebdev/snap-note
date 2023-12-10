@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import { useRef, useState } from 'react'
 import {
   useDisclosure,
@@ -8,15 +9,14 @@ import {
   ModalHeader,
   ModalCloseButton,
   ModalBody,
-  ModalFooter,
   FormControl,
   FormLabel,
   IconButton,
   Input
 } from '@chakra-ui/react'
 import { Plus, EditIcon } from 'lucide-react'
-import { useNotes } from '@/context'
 import { useCustomToast } from '@/hooks'
+import { useNotes } from '@/context'
 
 export const FormModal = ({ noteId }) => {
   const { showToast } = useCustomToast()
@@ -36,13 +36,14 @@ export const FormModal = ({ noteId }) => {
       editNote(noteId, title, body)
     } else {
       addNote(title, body)
+      setTitle('')
+      setBody('')
     }
-
-    setTitle('')
-    setBody('')
   }
 
-  const handleAddNote = () => {
+  const handleAddNote = (e) => {
+    e.preventDefault()
+
     if (!title || !body) {
       return showToast('error', 'Title and body cannot be empty')
     }
@@ -90,28 +91,37 @@ export const FormModal = ({ noteId }) => {
           <ModalHeader>{noteId ? 'Update' : 'Create'} Note</ModalHeader>
           <ModalCloseButton />
           <ModalBody pb={6}>
-            <FormControl onChange={(e) => setTitle(e.target.value)} isRequired>
-              <FormLabel>Title</FormLabel>
-              <Input ref={initialRef} placeholder='Title' value={title} />
-            </FormControl>
+            <form onSubmit={handleAddNote}>
+              <FormControl>
+                <FormLabel>Title</FormLabel>
+                <Input
+                  ref={initialRef}
+                  placeholder='Title'
+                  onChange={(e) => setTitle(e.target.value)}
+                  value={title}
+                />
+              </FormControl>
 
-            <FormControl
-              mt={4}
-              onChange={(e) => setBody(e.target.value)}
-              isRequired>
-              <FormLabel>Description</FormLabel>
-              <Input placeholder='Description' value={body} />
-            </FormControl>
+              <FormControl mt={4}>
+                <FormLabel>Description</FormLabel>
+                <Input
+                  placeholder='Description'
+                  onChange={(e) => setBody(e.target.value)}
+                  value={body}
+                />
+              </FormControl>
+
+              <Button mt={4} w='full' type='submit' colorScheme='blue' mr={3}>
+                {noteId ? 'Update' : 'Create'}
+              </Button>
+            </form>
           </ModalBody>
-
-          <ModalFooter>
-            <Button onClick={handleAddNote} colorScheme='blue' mr={3}>
-              {noteId ? 'Update' : 'Create'}
-            </Button>
-            <Button onClick={onClose}>Cancel</Button>
-          </ModalFooter>
         </ModalContent>
       </Modal>
     </>
   )
+}
+
+FormModal.propTypes = {
+  noteId: PropTypes.string
 }
