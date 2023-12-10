@@ -7,7 +7,7 @@ export const CustomTabPanel = ({ children }) => {
       as='main'
       padding={0}
       mt={4}
-      maxH='400px'
+      maxH='300px'
       overflowY='auto'
       css={{
         '&::-webkit-scrollbar': {

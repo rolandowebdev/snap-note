@@ -7,8 +7,8 @@ export const NotFound = () => {
     <Box bg='brand.dark' color='brand.light'>
       <Container
         as='main'
-        maxW='460px'
         minH='100vh'
+        maxW='460px'
         display='flex'
         alignItems='center'
         justifyContent='center'

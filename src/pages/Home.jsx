@@ -13,7 +13,8 @@ import {
   FormModal,
   EmptyNotes,
   SearchNotes,
-  CustomTabPanel
+  CustomTabPanel,
+  Footer
 } from '@/components'
 import { useNotes } from '@/context'
 
@@ -21,7 +22,7 @@ export const Home = () => {
   const { unarchivedNotes, archivedNotes } = useNotes()
   return (
     <>
-      <Container maxW='container.sm' minH='100vh'>
+      <Container maxW='container.sm' minH='calc(100vh - 53px)'>
         <Box as='header' py='1rem'>
           <Heading as='h1' size='xl' fontWeight='700' textAlign='center'>
             Snap Note
@@ -31,7 +32,7 @@ export const Home = () => {
             <FormModal />
           </Box>
         </Box>
-        <Tabs variant='soft-rounded' my={2} colorScheme='whiteAlpha'>
+        <Tabs variant='soft-rounded' mt={2} colorScheme='whiteAlpha'>
           <TabList>
             <Tab
               rounded='md'
@@ -72,6 +73,7 @@ export const Home = () => {
           </TabPanels>
         </Tabs>
       </Container>
+      <Footer />
     </>
   )
 }
