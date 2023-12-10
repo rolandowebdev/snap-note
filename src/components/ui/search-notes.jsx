@@ -27,7 +27,7 @@ export const SearchNotes = () => {
         border={0}
         h={12}
         bg='brand.softDark'
-        color='brand.light'
+        color='#FFFFFFA3'
         children={<Search size={22} />}
       />
       <Input
@@ -38,9 +38,9 @@ export const SearchNotes = () => {
         placeholder='Search Note'
         bg='brand.softDark'
         _placeholder={{
-          color: 'brand.light'
+          color: '#FFFFFFA3'
         }}
-        color='brand.light'
+        color='#FFFFFFA3'
         value={keyword}
         onChange={(e) => handleSearch(e)}
       />

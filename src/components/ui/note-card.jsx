@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types'
+import parse from 'html-react-parser'
 import {
   Box,
   Heading,
@@ -62,9 +63,11 @@ export const NoteCard = ({ id, title, body, createdAt, archived }) => {
               {title}
             </Heading>
             <Text fontSize='sm' fontWeight='300'>
-              {`${body.length > 55 ? body.slice(0, 55) : body}${
-                body.length > 55 ? '...' : ''
-              }`}
+              {parse(
+                `${body.length > 55 ? body.slice(0, 55) : body}${
+                  body.length > 55 ? '...' : ''
+                }`
+              )}
             </Text>
           </Link>
         </HStack>

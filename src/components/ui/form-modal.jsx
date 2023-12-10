@@ -12,7 +12,8 @@ import {
   FormControl,
   FormLabel,
   IconButton,
-  Input
+  Input,
+  Textarea
 } from '@chakra-ui/react'
 import { Plus, EditIcon } from 'lucide-react'
 import { useCustomToast } from '@/hooks'
@@ -73,7 +74,7 @@ export const FormModal = ({ noteId }) => {
           variant='ghost'
           aria-label='create note'
           bg='brand.softDark'
-          color='brand.light'
+          color='#FFFFFFA3'
           _hover={{ bgColor: 'brand.border' }}
           _active={{ bgColor: 'transparent' }}
           icon={<Plus />}
@@ -104,7 +105,7 @@ export const FormModal = ({ noteId }) => {
 
               <FormControl mt={4}>
                 <FormLabel>Description</FormLabel>
-                <Input
+                <Textarea
                   placeholder='Description'
                   onChange={(e) => setBody(e.target.value)}
                   value={body}

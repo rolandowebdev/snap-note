@@ -1,7 +1,15 @@
+import parse from 'html-react-parser'
 import { ArrowLeft } from 'lucide-react'
 import { useParams } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
-import { Container, Box, IconButton, Text, Badge } from '@chakra-ui/react'
+import {
+  Container,
+  Box,
+  IconButton,
+  Text,
+  Badge,
+  Image
+} from '@chakra-ui/react'
 import { NotFound } from './NotFound'
 import { showFormattedDate } from '@/utils'
 import { useNotes } from '@/context'
@@ -33,8 +41,17 @@ export const DetailNote = () => {
             </Text>
           </Box>
           <Box as='main' pb={10} pt={5}>
+            <Image
+              w='full'
+              rounded='md'
+              mb={2}
+              h='250px'
+              objectFit='cover'
+              src='public/example.jpg'
+              alt='example image'
+            />
             <Text as='p' lineHeight='1.75rem' textAlign='justify'>
-              {note?.body}
+              {parse(note?.body)}
             </Text>
             <Badge mt={3}>{showFormattedDate(note?.createdAt)}</Badge>
           </Box>
