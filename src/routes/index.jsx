@@ -1,5 +1,5 @@
 import { createBrowserRouter } from 'react-router-dom'
-import { Home, DetailNote, NotFound } from '@/pages'
+import { Home, DetailNote, NotFound, AddNote } from '@/pages'
 import { RootContainer } from '@/components'
 
 export const router = createBrowserRouter([
@@ -13,8 +13,11 @@ export const router = createBrowserRouter([
       },
       {
         path: '/:id',
-        element: <DetailNote />,
-        errorElement: <NotFound />
+        element: <DetailNote />
+      },
+      {
+        path: '/notes/new',
+        element: <AddNote />
       }
     ]
   },

@@ -13,10 +13,10 @@ import {
 } from '@chakra-ui/react'
 import { Link as RouterLink } from 'react-router-dom'
 import { CheckCircle, Circle } from 'lucide-react'
+import { FormUpdate } from './form-update'
 import { AlertDialog } from './alert-dialog'
 import { showFormattedDate } from '@/utils'
 import { useNotes } from '@/context'
-import { FormModal } from './form-modal'
 
 export const NoteCard = ({ id, title, body, createdAt, archived }) => {
   const { deleteNote, archiveNote } = useNotes()
@@ -76,7 +76,7 @@ export const NoteCard = ({ id, title, body, createdAt, archived }) => {
             {showFormattedDate(createdAt)}
           </Text>
           <HStack gap={0}>
-            <FormModal noteId={id} />
+            <FormUpdate noteId={id} />
             <AlertDialog
               title='Note'
               description='Are you sure you want to delete this note?'

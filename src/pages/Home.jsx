@@ -6,19 +6,22 @@ import {
   Tabs,
   Tab,
   TabList,
-  TabPanels
+  TabPanels,
+  IconButton
 } from '@chakra-ui/react'
 import {
   NoteCard,
-  FormModal,
   EmptyNotes,
   SearchNotes,
   CustomTabPanel,
   Footer
 } from '@/components'
+import { Plus } from 'lucide-react'
 import { useNotes } from '@/context'
+import { useNavigate } from 'react-router-dom'
 
 export const Home = () => {
+  const navigate = useNavigate()
   const { unarchivedNotes, archivedNotes } = useNotes()
   return (
     <>
@@ -29,7 +32,18 @@ export const Home = () => {
           </Heading>
           <Box as='nav' mt={6} display='flex' gap={3} alignItems='center'>
             <SearchNotes />
-            <FormModal />
+            <IconButton
+              h={12}
+              w={14}
+              onClick={() => navigate('/notes/new')}
+              variant='ghost'
+              aria-label='create note'
+              bg='brand.softDark'
+              color='#FFFFFFA3'
+              _hover={{ bgColor: 'brand.border' }}
+              _active={{ bgColor: 'transparent' }}
+              icon={<Plus />}
+            />
           </Box>
         </Box>
         <Tabs variant='soft-rounded' mt={4} colorScheme='whiteAlpha' isFitted>

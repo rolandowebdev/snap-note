@@ -1,6 +1,6 @@
 export * from './alert-dialog'
 export * from './custom-tabpanel'
 export * from './empty-notes'
-export * from './form-modal'
+export * from './form-update'
 export * from './note-card'
 export * from './search-notes'

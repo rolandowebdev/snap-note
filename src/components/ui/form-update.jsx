@@ -15,13 +15,13 @@ import {
   Input,
   Textarea
 } from '@chakra-ui/react'
-import { Plus, EditIcon } from 'lucide-react'
+import { EditIcon } from 'lucide-react'
 import { useCustomToast } from '@/hooks'
 import { useNotes } from '@/context'
 
-export const FormModal = ({ noteId }) => {
+export const FormUpdate = ({ noteId }) => {
   const { showToast } = useCustomToast()
-  const { addNote, editNote, getNoteById } = useNotes()
+  const { editNote, getNoteById } = useNotes()
   const { isOpen, onOpen, onClose } = useDisclosure()
 
   const initialNote = getNoteById(noteId)
@@ -32,54 +32,33 @@ export const FormModal = ({ noteId }) => {
   const initialRef = useRef(null)
   const finalRef = useRef(null)
 
-  const addAndResetNote = () => {
-    if (noteId) {
-      editNote(noteId, title, body)
-    } else {
-      addNote(title, body)
-      setTitle('')
-      setBody('')
-    }
+  const UpdateAndResetNote = () => {
+    editNote(noteId, title, body)
   }
 
-  const handleAddNote = (e) => {
+  const handleUpdateNote = (e) => {
     e.preventDefault()
 
     if (!title || !body) {
       return showToast('error', 'Title and body cannot be empty')
     }
 
-    addAndResetNote()
-    showToast('success', `Note ${noteId ? 'updated' : 'added'} successfully`)
+    UpdateAndResetNote()
+    showToast('success', 'Note updated successfully')
     onClose()
   }
 
   return (
     <>
-      {noteId ? (
-        <IconButton
-          onClick={onOpen}
-          aria-label='update note'
-          color='brand.light'
-          variant='ghost'
-          _hover={{ color: 'brand.success' }}
-          _active={{ bgColor: 'transparent' }}
-          icon={<EditIcon />}
-        />
-      ) : (
-        <IconButton
-          h={12}
-          w={14}
-          onClick={onOpen}
-          variant='ghost'
-          aria-label='create note'
-          bg='brand.softDark'
-          color='#FFFFFFA3'
-          _hover={{ bgColor: 'brand.border' }}
-          _active={{ bgColor: 'transparent' }}
-          icon={<Plus />}
-        />
-      )}
+      <IconButton
+        onClick={onOpen}
+        aria-label='update note'
+        color='brand.light'
+        variant='ghost'
+        _hover={{ color: 'brand.success' }}
+        _active={{ bgColor: 'transparent' }}
+        icon={<EditIcon />}
+      />
 
       <Modal
         isCentered
@@ -89,10 +68,10 @@ export const FormModal = ({ noteId }) => {
         onClose={onClose}>
         <ModalOverlay />
         <ModalContent bg='brand.softDark' color='brand.light'>
-          <ModalHeader>{noteId ? 'Update' : 'Create'} Note</ModalHeader>
+          <ModalHeader>Update Note</ModalHeader>
           <ModalCloseButton />
           <ModalBody pb={6}>
-            <form onSubmit={handleAddNote}>
+            <form onSubmit={handleUpdateNote}>
               <FormControl>
                 <FormLabel>Title</FormLabel>
                 <Input
@@ -114,7 +93,7 @@ export const FormModal = ({ noteId }) => {
               </FormControl>
 
               <Button mt={4} w='full' type='submit' colorScheme='blue' mr={3}>
-                {noteId ? 'Update' : 'Create'}
+                Update
               </Button>
             </form>
           </ModalBody>
@@ -124,6 +103,6 @@ export const FormModal = ({ noteId }) => {
   )
 }
 
-FormModal.propTypes = {
+FormUpdate.propTypes = {
   noteId: PropTypes.string
 }
