@@ -9,8 +9,14 @@ import {
   TabPanels,
   TabPanel
 } from '@chakra-ui/react'
+import {
+  NoteCard,
+  FormModal,
+  EmptyNotes,
+  SearchNotes,
+  CustomTabPanel
+} from '@/components'
 import { useNotes } from '@/context'
-import { NoteCard, FormModal, EmptyNotes, SearchNotes } from '@/components'
 
 export const Home = () => {
   const { unarchivedNotes, archivedNotes } = useNotes()
@@ -42,24 +48,7 @@ export const Home = () => {
             </Tab>
           </TabList>
           <TabPanels>
-            <TabPanel
-              as='main'
-              padding={0}
-              mt={4}
-              maxH='400px'
-              overflowY='auto'
-              css={{
-                '&::-webkit-scrollbar': {
-                  width: '5px'
-                },
-                '&::-webkit-scrollbar-track': {
-                  width: '6px'
-                },
-                '&::-webkit-scrollbar-thumb': {
-                  background: '#FFFFFFA3',
-                  borderRadius: '24px'
-                }
-              }}>
+            <CustomTabPanel>
               <VStack as='article' gap={3}>
                 {unarchivedNotes.length > 0 ? (
                   unarchivedNotes.map((note) => (
@@ -69,25 +58,8 @@ export const Home = () => {
                   <EmptyNotes description='List of unarchived notes is empty' />
                 )}
               </VStack>
-            </TabPanel>
-            <TabPanel
-              as='main'
-              padding={0}
-              mt={4}
-              maxH='400px'
-              overflowY='auto'
-              css={{
-                '&::-webkit-scrollbar': {
-                  width: '5px'
-                },
-                '&::-webkit-scrollbar-track': {
-                  width: '6px'
-                },
-                '&::-webkit-scrollbar-thumb': {
-                  background: '#FFFFFFA3',
-                  borderRadius: '24px'
-                }
-              }}>
+            </CustomTabPanel>
+            <CustomTabPanel>
               <VStack as='article' gap={3}>
                 {archivedNotes.length > 0 ? (
                   archivedNotes.map((note) => (
@@ -97,7 +69,7 @@ export const Home = () => {
                   <EmptyNotes description='List of archived notes is empty' />
                 )}
               </VStack>
-            </TabPanel>
+            </CustomTabPanel>
           </TabPanels>
         </Tabs>
       </Container>
