@@ -1,6 +1,6 @@
 import { useSearchParams } from 'react-router-dom'
 import { createContext, useState, useContext } from 'react'
-import { listNote } from '@/_data'
+import { listNote } from '@/data'
 
 const NotesContext = createContext()
 
