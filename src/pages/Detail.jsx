@@ -26,14 +26,14 @@ export const DetailNote = () => {
           icon={<ArrowLeft />}
         />
         <Text w='full' fontSize='3xl' fontWeight={700} textAlign='center'>
-          {note.title}
+          {note?.title || 'No title'}
         </Text>
       </Box>
       <Box as='main' pb={10} pt={5}>
         <Text as='p' lineHeight='1.75rem' textAlign='justify'>
-          {note.body}
+          {note?.body || 'No body'}
         </Text>
-        <Badge mt={3}>{showFormattedDate(note.createdAt)}</Badge>
+        <Badge mt={3}>{showFormattedDate(note?.createdAt)}</Badge>
       </Box>
     </Container>
   )

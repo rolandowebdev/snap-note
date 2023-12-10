@@ -1,6 +1,6 @@
 import { createBrowserRouter } from 'react-router-dom'
+import { Home, DetailNote, NotFound } from '@/pages'
 import { RootContainer } from '@/components'
-import { Home, DetailNote } from '@/pages'
 
 export const router = createBrowserRouter([
   {
@@ -16,5 +16,9 @@ export const router = createBrowserRouter([
         element: <DetailNote />
       }
     ]
+  },
+  {
+    path: '*',
+    element: <NotFound />
   }
 ])
