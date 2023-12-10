@@ -6,6 +6,9 @@ const NotesContext = createContext()
 export const NotesProvider = ({ children }) => {
   const [notes, setNotes] = useState(listNote)
 
+  const unarchivedNotes = notes.filter((note) => !note.archived)
+  const archivedNotes = notes.filter((note) => note.archived)
+
   const getNoteById = (id) => {
     return notes.find((note) => note.id === id)
   }
@@ -29,7 +32,15 @@ export const NotesProvider = ({ children }) => {
 
   return (
     <NotesContext.Provider
-      value={{ notes, setNotes, deleteNote, addNote, getNoteById }}>
+      value={{
+        notes,
+        archivedNotes,
+        unarchivedNotes,
+        setNotes,
+        deleteNote,
+        addNote,
+        getNoteById
+      }}>
       {children}
     </NotesContext.Provider>
   )

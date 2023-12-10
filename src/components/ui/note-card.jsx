@@ -28,12 +28,19 @@ export const NoteCard = ({ id, title, body, createdAt, archived }) => {
       <CardBody display='flex' p={3} gap={3} justifyContent='space-between'>
         <HStack gap={3}>
           {archived ? (
-            <IconButton aria-label='uncheck note' icon={<CheckCircle />} />
+            <IconButton
+              variant='ghost'
+              aria-label='uncheck note'
+              color='brand.light'
+              _hover={{ color: 'brand.success' }}
+              _active={{ bgColor: 'transparent' }}
+              icon={<CheckCircle />}
+            />
           ) : (
             <IconButton
+              variant='ghost'
               aria-label='check note'
               color='brand.light'
-              variant='ghost'
               _hover={{ color: 'brand.warning' }}
               _active={{ bgColor: 'transparent' }}
               icon={<Circle />}
@@ -62,9 +69,9 @@ export const NoteCard = ({ id, title, body, createdAt, archived }) => {
           </Text>
           <HStack gap={0}>
             <IconButton
+              variant='ghost'
               aria-label='edit note'
               color='brand.light'
-              variant='ghost'
               _hover={{ color: 'brand.success' }}
               _active={{ bgColor: 'transparent' }}
               icon={<FileEdit />}

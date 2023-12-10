@@ -7,13 +7,18 @@ import {
   Heading,
   Input,
   InputGroup,
-  InputLeftAddon
+  InputLeftAddon,
+  Tabs,
+  Tab,
+  TabList,
+  TabPanels,
+  TabPanel
 } from '@chakra-ui/react'
 import { NoteCard, AddModal } from '@/components'
 import { useNotes } from '@/context'
 
 export const Home = () => {
-  const { notes } = useNotes()
+  const { notes, unarchivedNotes, archivedNotes } = useNotes()
 
   return (
     <>
@@ -44,22 +49,47 @@ export const Home = () => {
             <AddModal />
           </Box>
         </Box>
-        <Box as='main' pb={10}>
-          <VStack as='article' gap={3}>
-            {notes.length > 0 ? (
-              notes
-                .slice(0, 3)
-                .map((note) => <NoteCard key={note.id} {...note} />)
-            ) : (
-              <Box display='flex' alignItems='center' gap={2}>
-                <Frown size={28} />
-                <Text as='h2' fontSize='2xl' fontWeight={500}>
-                  Note is empty
-                </Text>
-              </Box>
-            )}
-          </VStack>
-        </Box>
+
+        <Tabs variant='soft-rounded' my={2} colorScheme='whiteAlpha'>
+          <TabList>
+            <Tab>Unarchived</Tab>
+            <Tab>Archived</Tab>
+          </TabList>
+          <TabPanels>
+            <TabPanel as='main' padding={0} mt={4}>
+              <VStack as='article' gap={3}>
+                {unarchivedNotes.length > 0 ? (
+                  unarchivedNotes.map((note) => (
+                    <NoteCard key={note.id} {...note} />
+                  ))
+                ) : (
+                  <Box display='flex' alignItems='center' gap={2}>
+                    <Frown size={28} />
+                    <Text as='h2' fontSize='2xl' fontWeight={500}>
+                      Note is empty
+                    </Text>
+                  </Box>
+                )}
+              </VStack>
+            </TabPanel>
+            <TabPanel as='main' padding={0} mt={4}>
+              <VStack as='article' gap={3}>
+                {archivedNotes.length > 0 ? (
+                  archivedNotes.map((note) => (
+                    <NoteCard key={note.id} {...note} />
+                  ))
+                ) : (
+                  <Box display='flex' alignItems='center' gap={2}>
+                    <Frown size={28} />
+                    <Text as='h2' fontSize='2xl' fontWeight={500}>
+                      Note is empty
+                    </Text>
+                  </Box>
+                )}
+              </VStack>
+            </TabPanel>
+          </TabPanels>
+        </Tabs>
       </Container>
     </>
   )
