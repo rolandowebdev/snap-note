@@ -73,7 +73,7 @@ export const FormModal = ({ noteId }) => {
           variant='ghost'
           aria-label='create note'
           bg='brand.softDark'
-          color='#4a5568'
+          color='brand.light'
           _hover={{ bgColor: 'brand.border' }}
           _active={{ bgColor: 'transparent' }}
           icon={<Plus />}
