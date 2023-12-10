@@ -12,7 +12,7 @@ export const router = createBrowserRouter([
         element: <Home />
       },
       {
-        path: '/detail/:id',
+        path: '/:id',
         element: <DetailNote />,
         errorElement: <NotFound />
       }

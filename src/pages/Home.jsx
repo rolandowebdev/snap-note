@@ -6,8 +6,7 @@ import {
   Tabs,
   Tab,
   TabList,
-  TabPanels,
-  TabPanel
+  TabPanels
 } from '@chakra-ui/react'
 import {
   NoteCard,
