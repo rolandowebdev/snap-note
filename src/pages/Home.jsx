@@ -32,7 +32,7 @@ export const Home = () => {
             <FormModal />
           </Box>
         </Box>
-        <Tabs variant='soft-rounded' mt={2} colorScheme='whiteAlpha'>
+        <Tabs variant='soft-rounded' mt={4} colorScheme='whiteAlpha' isFitted>
           <TabList>
             <Tab
               rounded='md'

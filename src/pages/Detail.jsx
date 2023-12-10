@@ -54,7 +54,7 @@ export const DetailNote = () => {
                 rounded='md'
                 h='250px'
                 objectFit='cover'
-                src='public/example.jpg'
+                src='/example.jpg'
                 alt='example image'
               />
               <Text as='p' lineHeight='1.75rem' textAlign='justify'>
