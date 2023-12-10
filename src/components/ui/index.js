@@ -1,3 +1,5 @@
 export * from './add-modal'
 export * from './alert-dialog'
+export * from './empty-notes'
 export * from './note-card'
+export * from './search-notes'
