@@ -72,7 +72,7 @@ export const DetailNote = () => {
           <NotFound />
         )}
       </Container>
-      <Footer />
+      {note ? <Footer /> : null}
     </>
   )
 }
