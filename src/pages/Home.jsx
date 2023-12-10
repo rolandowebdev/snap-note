@@ -1,4 +1,5 @@
-import { Frown, Search } from 'lucide-react'
+import { useNavigate } from 'react-router-dom'
+import { Bird, Search } from 'lucide-react'
 import {
   Container,
   Box,
@@ -18,7 +19,21 @@ import { NoteCard, AddModal } from '@/components'
 import { useNotes } from '@/context'
 
 export const Home = () => {
-  const { unarchivedNotes, archivedNotes } = useNotes()
+  const navigate = useNavigate()
+  const { unarchivedNotes, archivedNotes, onKeywordChange, keyword } =
+    useNotes()
+
+  const handleSearch = (e) => {
+    const searchKeyword = e.target.value
+
+    if (!searchKeyword) {
+      onKeywordChange('')
+      navigate('/')
+      return
+    }
+
+    onKeywordChange(searchKeyword)
+  }
 
   return (
     <>
@@ -43,6 +58,8 @@ export const Home = () => {
                 type='search'
                 placeholder='Search Note'
                 bg='brand.softDark'
+                value={keyword}
+                onChange={(e) => handleSearch(e)}
               />
             </InputGroup>
             <AddModal />
@@ -62,10 +79,18 @@ export const Home = () => {
                     <NoteCard key={note.id} {...note} />
                   ))
                 ) : (
-                  <Box display='flex' alignItems='center' gap={2}>
-                    <Frown size={28} />
-                    <Text as='h2' fontSize='2xl' fontWeight={500}>
-                      Note is empty
+                  <Box
+                    display='flex'
+                    alignItems='center'
+                    flexDir='column'
+                    gap={2}
+                    mt={20}>
+                    <Bird size={120} />
+                    <Heading as='h2' fontSize='2xl' fontWeight={500}>
+                      Pretty empty around here
+                    </Heading>
+                    <Text as='p' fontSize='sm' fontWeight={300} mt={1}>
+                      List of unarchived notes is empty
                     </Text>
                   </Box>
                 )}
@@ -78,10 +103,18 @@ export const Home = () => {
                     <NoteCard key={note.id} {...note} />
                   ))
                 ) : (
-                  <Box display='flex' alignItems='center' gap={2}>
-                    <Frown size={28} />
-                    <Text as='h2' fontSize='2xl' fontWeight={500}>
-                      Note is empty
+                  <Box
+                    display='flex'
+                    alignItems='center'
+                    flexDir='column'
+                    gap={2}
+                    mt={20}>
+                    <Bird size={120} />
+                    <Heading as='h2' fontSize='2xl' fontWeight={500}>
+                      Pretty empty around here
+                    </Heading>
+                    <Text as='p' fontSize='sm' fontWeight={300} mt={1}>
+                      List of archived notes is empty
                     </Text>
                   </Box>
                 )}

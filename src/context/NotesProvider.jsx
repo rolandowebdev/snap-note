@@ -1,13 +1,27 @@
+import { useSearchParams } from 'react-router-dom'
 import { createContext, useState, useContext } from 'react'
 import { listNote } from '@/_data'
 
 const NotesContext = createContext()
 
 export const NotesProvider = ({ children }) => {
-  const [notes, setNotes] = useState(listNote)
+  const [searchParams, setSearchParams] = useSearchParams()
+  const searchParamsKeyword = searchParams.get('keyword')
 
-  const unarchivedNotes = notes.filter((note) => !note.archived)
-  const archivedNotes = notes.filter((note) => note.archived)
+  const [notes, setNotes] = useState(listNote)
+  const [keyword, setKeyword] = useState(searchParamsKeyword || '')
+
+  const onKeywordChange = (keyword) => {
+    setKeyword(keyword)
+    setSearchParams({ keyword: keyword })
+  }
+
+  const filteredNotes = notes.filter((note) =>
+    note.title.toLowerCase().includes(keyword.toLowerCase())
+  )
+
+  const archivedNotes = filteredNotes.filter((note) => note.archived)
+  const unarchivedNotes = filteredNotes.filter((note) => !note.archived)
 
   const getNoteById = (id) => {
     return notes.find((note) => note.id === id)
@@ -39,7 +53,9 @@ export const NotesProvider = ({ children }) => {
         setNotes,
         deleteNote,
         addNote,
-        getNoteById
+        getNoteById,
+        onKeywordChange,
+        keyword
       }}>
       {children}
     </NotesContext.Provider>
