@@ -14,7 +14,7 @@ import { Link as RouterLink } from 'react-router-dom'
 import { CheckCircle, Circle } from 'lucide-react'
 import { FormUpdate } from './form-update'
 import { AlertDialog } from './alert-dialog'
-import { showFormattedDate } from '@/utils'
+import { showFormattedDate } from '@/utils/formattedDate'
 import { useNotes } from '@/context'
 
 export const NoteCard = ({ id, title, body, createdAt, archived }) => {

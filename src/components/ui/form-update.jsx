@@ -16,7 +16,7 @@ import {
   Textarea
 } from '@chakra-ui/react'
 import { EditIcon } from 'lucide-react'
-import { useCustomToast } from '@/hooks'
+import { useCustomToast } from '@/hooks/useCustomToast'
 import { useNotes } from '@/context'
 
 export const FormUpdate = ({ noteId }) => {

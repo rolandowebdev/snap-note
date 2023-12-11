@@ -11,7 +11,7 @@ import {
   Image
 } from '@chakra-ui/react'
 import { NotFound } from './NotFound'
-import { showFormattedDate } from '@/utils'
+import { showFormattedDate } from '@/utils/formattedDate'
 import { useNotes } from '@/context'
 import { Footer } from '@/components'
 

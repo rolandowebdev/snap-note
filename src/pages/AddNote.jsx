@@ -11,7 +11,7 @@ import {
   Text,
   IconButton
 } from '@chakra-ui/react'
-import { useCustomToast } from '@/hooks'
+import { useCustomToast } from '@/hooks/useCustomToast'
 import { useNotes } from '@/context'
 import { Footer } from '@/components'
 import { useNavigate } from 'react-router-dom'
