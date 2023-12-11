@@ -1,6 +1,6 @@
 # Submission 1 Dicoding Fundamental React
 
-[![Snap Note Preview](public/snap-note.png)]
+![Snap Note Preview](public/snap-note.png)
 
 Welcome to the Snap Note project! This application is part of my submission for the IDCamp scholarship in 2023. Snap Note is application for creating and saving your daily notes.
 
