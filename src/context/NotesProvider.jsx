@@ -1,6 +1,7 @@
 import { useSearchParams } from 'react-router-dom'
 import { createContext, useState, useContext } from 'react'
 import { listNote } from '@/data/notes'
+import { useMemo } from 'react'
 
 const NotesContext = createContext()
 
@@ -60,28 +61,33 @@ export const NotesProvider = ({ children }) => {
     )
   }
 
+  const contextValue = useMemo(() => {
+    return {
+      notes,
+      archivedNotes,
+      unarchivedNotes,
+      setNotes,
+      deleteNote,
+      addNote,
+      editNote,
+      getNoteById,
+      archiveNote,
+      onKeywordChange,
+      keyword
+    }
+  }, [notes, archivedNotes, unarchivedNotes, keyword])
+
   return (
-    <NotesContext.Provider
-      value={{
-        notes,
-        archivedNotes,
-        unarchivedNotes,
-        setNotes,
-        deleteNote,
-        addNote,
-        editNote,
-        getNoteById,
-        archiveNote,
-        onKeywordChange,
-        keyword
-      }}>
+    <NotesContext.Provider value={contextValue}>
       {children}
     </NotesContext.Provider>
   )
 }
 
 export const useNotes = () => {
-  if (!NotesContext) {
+  const context = useContext(NotesContext)
+
+  if (!context) {
     throw new Error('useNotes must be used within a NotesProvider')
   }
 
